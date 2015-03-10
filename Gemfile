@@ -55,3 +55,4 @@ end
 gem 'bower-rails'
 
 gem 'devise'
+gem 'squeel'

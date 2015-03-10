@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  resources :products
+
   devise_for :users
   get 'purchases/index'
-  get 'purchases/step_two'
+  get 'purchases/step_two', as: :step_two
   post 'purchases' => 'purchases#purchase'
   post 'step_two/purchases' => 'purchases#create'
 

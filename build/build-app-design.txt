@@ -1,3 +1,11 @@
+rails g migration add_user_id_to_purchases user_id:integer
+rails g model Product name:string stock:integer
+rails g model PurchaseEntry product_id:integer quantity:integer
+rails g model Purchase name:string
+rails g scaffold Product name:string stock:integer
+rails g model PurchasedProduct purchase_id:integer product_id:integer quantity:integer
+
+rails g migration add_approved_to_users approved:boolean
 rails g controller Home index
 rails g controller Purchases index create
 

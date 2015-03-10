@@ -9,9 +9,10 @@ RSpec.describe PurchasesController, type: :controller do
     end
   end
 
-  describe "GET #create" do
+  describe "GET #step_two" do
     it "returns http success" do
-      get :create
+      sign_in
+      get :step_two
       expect(response).to have_http_status(:success)
     end
   end

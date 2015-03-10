@@ -1,31 +1,15 @@
+
 <div class="purchase_section">
   <div class="products">
 
-    <div class="product">
-    <label>Canon EFS 75-300</label>
-    <input type="hidden" name="products[][id]" value="1"/>
-    <input type="text" name="products[][quantity]" />
-    </div>
+  <ul>
+    <% @products.each do |product| %>
+      <li><%= product.name %></li>
+    <% end %>
+  </ul>
 
-    <div class="product">
-    <label>Canon EFS 18-55</label>
-    <input type="hidden" name="products[][id]" value="2"/>
-    <input type="text" name="products[][quantity]" />
-    </div>
-
-    <div class="product">
-    <label>Canon EFS 14mm</label>
-    <input type="hidden" name="products[][id]" value="3"/>
-    <input type="text" name="products[][quantity]" />
-    </div>
-
-    <div class="control">
-    <%= label_tag :generate_error %>
-    <%= check_box_tag :generate_error %>
-    </div>
-  </div>
-
-  <div class="message"></div>
+  <div class="message">Given a POST request to:  PurchasesController#create
+  with params { "products" => [  { "id" => 46, "quantity" => 3  }, {  "id" => 70, "quantity" => 2 } ] }</div>
 
   <button class="purchase_btn">
     Purchase!
@@ -37,14 +21,8 @@
     $(".purchase_btn").on("click", function(event){
       event.preventDefault();
 
-      var data = $(this).closest(".purchase_section").find(".products").find("input, textarea, select").serialize();
-
-      // since it is required to trigger an error, we can do so manually
-      var generate_error = ($(".products .control input[name='generate_error']:checked").length > 0) ? true : false;
-      if(generate_error){
-        data += "&error=true"
-      }
-
+      //var data = { products: [  { id: 46, quantity: 3  }, {  id: 70, quantity: 2 } ] };
+      var data = "products%5B%5D%5Bid%5D=46&products%5B%5D%5Bquantity%5D=3&products%5B%5D%5Bid%5D=70&products%5B%5D%5Bquantity%5D=2"
       console.log(data);
 
       var button_text_orig = $(".purchase_btn").text();
@@ -52,11 +30,11 @@
       $(".purchase_btn").text("processing...");
       $(".message").text("");
 
-      var jqxhr = $.post( "/purchases", data, function(response) {
+      var jqxhr = $.post( "/step_two/purchases.json", data, function(response) {
         //alert( "success" );
       })
       .done(function(responseJSON) {
-        var message = responseJSON["message"]
+        var message = JSON.stringify(responseJSON)
         //$(".message").addClass("success")
         $(".purchase_section").text(message);
         

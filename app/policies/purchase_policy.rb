@@ -7,6 +7,11 @@ class PurchasePolicy
     @purchase = purchase
   end
 
+  def create?
+    current_user.approved?
+    #or (purchase.user == current_user)
+  end
+
   def update?
     current_user.approved?
     #or (purchase.user == current_user)

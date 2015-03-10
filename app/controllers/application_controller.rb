@@ -10,4 +10,12 @@ class ApplicationController < ActionController::Base
   def policy(record)
     "#{record.class}Policy".constantize.new(current_user, record)
   end  
+
+  rescue_from Errors::NotAuthorizedError do
+    render text: "Access Denied", status: :unauthorized
+  end  
+
+  rescue_from Exception do
+    render text: "Server Error", status: 500
+  end  
 end
