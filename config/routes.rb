@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   resources :products
 
   devise_for :users
-  get 'purchases/index'
-  get 'purchases/step_two', as: :step_two
+
+  get 'purchases/index', as: :step_one
   post 'purchases' => 'purchases#purchase'
+
+  get 'purchases/step_two', as: :step_two
   post 'step_two/purchases' => 'purchases#create'
 
   get 'home/index'
