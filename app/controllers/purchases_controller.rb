@@ -1,4 +1,6 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_user!, only: [:step_two, :create]
+
   def index
   end
 

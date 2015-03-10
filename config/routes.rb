@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'purchases/index'
   get 'purchases/step_two'
   post 'purchases' => 'purchases#purchase'
