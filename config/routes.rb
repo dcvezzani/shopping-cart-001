@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'purchases/index', as: :step_one
   post 'purchases' => 'purchases#purchase'
 
-  get 'purchases/step_two', as: :step_two
+  get 'step_two' => 'purchases#step_two', as: :step_two
   post 'step_two/purchases' => 'purchases#create'
 
   get 'home/index'
