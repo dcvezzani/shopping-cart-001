@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'purchases/index'
-  post 'purchases' => 'purchases#create'
+  get 'purchases/step_two'
+  post 'purchases' => 'purchases#purchase'
+  post 'step_two/purchases' => 'purchases#create'
 
   get 'home/index'
 

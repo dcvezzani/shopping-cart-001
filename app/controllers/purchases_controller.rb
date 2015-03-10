@@ -2,7 +2,10 @@ class PurchasesController < ApplicationController
   def index
   end
 
-  def create
+  def step_two
+  end
+
+  def purchase
     # give a little time to show the update to the button in the view
     sleep(1)
 
@@ -11,5 +14,8 @@ class PurchasesController < ApplicationController
     else
       render json: JSON.generate({message: "Thanks for your purchase"})
     end
+  end
+
+  def create
   end
 end

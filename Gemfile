@@ -53,3 +53,6 @@ group :test, :development do
 end
 
 gem 'bower-rails'
+
+gem 'devise'
+

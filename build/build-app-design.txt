@@ -1,3 +1,6 @@
+rails g controller Home index
+rails g controller Purchases index create
+
 BUNDLE_GEMFILE=/Users/davidvezzani/rails-app/clean-start/Gemfile bundle exec rails new clf-004 -T
 git clone -b master clean-start clf-004
 

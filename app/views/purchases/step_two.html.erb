@@ -1,0 +1,80 @@
+<div class="container purchase_section">
+  <div class="products">
+
+    <div class="product">
+    <label>Canon EFS 75-300</label>
+    <input type="hidden" name="products[][id]" value="1"/>
+    <input type="text" name="products[][quantity]" />
+    </div>
+
+    <div class="product">
+    <label>Canon EFS 18-55</label>
+    <input type="hidden" name="products[][id]" value="2"/>
+    <input type="text" name="products[][quantity]" />
+    </div>
+
+    <div class="product">
+    <label>Canon EFS 14mm</label>
+    <input type="hidden" name="products[][id]" value="3"/>
+    <input type="text" name="products[][quantity]" />
+    </div>
+
+    <div class="control">
+    <%= label_tag :generate_error %>
+    <%= check_box_tag :generate_error %>
+    </div>
+  </div>
+
+  <div class="message"></div>
+
+  <button class="purchase_btn">
+    Purchase!
+  </button>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".purchase_btn").on("click", function(event){
+      event.preventDefault();
+
+      var data = $(this).closest(".purchase_section").find(".products").find("input, textarea, select").serialize();
+
+      // since it is required to trigger an error, we can do so manually
+      var generate_error = ($(".products .control input[name='generate_error']:checked").length > 0) ? true : false;
+      if(generate_error){
+        data += "&error=true"
+      }
+
+      console.log(data);
+
+      var button_text_orig = $(".purchase_btn").text();
+      $(".message").removeClass("success, error")
+      $(".purchase_btn").text("processing...");
+      $(".message").text("");
+
+      var jqxhr = $.post( "/purchases", data, function(response) {
+        //alert( "success" );
+      })
+      .done(function(responseJSON) {
+        var message = responseJSON["message"]
+        //$(".message").addClass("success")
+        $(".purchase_section").text(message);
+        
+        //alert( "second success" );
+      })
+      .fail(function(response) {
+        console.log(response);
+        var message = response.responseJSON["message"]
+        $(".message").addClass("error")
+        $(".message").text(message);
+
+        //alert( "error" );
+      })
+      .always(function() {
+        $(".purchase_btn").text(button_text_orig);
+
+        //alert( "finished" );
+      });
+    });
+  });
+</script>
