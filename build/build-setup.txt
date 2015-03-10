@@ -1,0 +1,60 @@
+gem 'sass', '3.2.19' 
+group :test, :development do
+  gem "rspec-rails", "~> 3.0"
+  gem "factory_girl_rails", "~> 4.0"
+  gem "capybara"
+  gem "database_cleaner"
+  gem "selenium-webdriver"
+end
+
+rails generate rspec:install
+
+bundle binstubs rspec-core
+
+
+mvim spec/rails_helper.rb
+>
+require 'capybara/rails'
+require 'capybara/rspec'
+
+mkdir spec/features
+mvim spec/features/basic_spec.rb
+>
+describe "Use capybara", :type => :feature do
+  it "test capybara set up" do
+    skip "visit '/test'"
+  end
+end
+
+mvim .rspec
+>
+--color
+--require rails_helper
+
+
+bin/rspec
+gem 'bower-rails'
+
+
+mvim Bowerfile
+>
+asset 'bootstrap-sass-official'
+# vim: ft=ruby
+
+rake bower:install
+
+
+config/initializers/assets.rb
+>
+Rails.application.config.assets.paths << Rails.root.join("vendor","assets","bower_components")
+Rails.application.config.assets.paths << Rails.root.join("vendor","assets","bower_components","bootstrap-sass-official","assets","fonts")
+Rails.application.config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff)$)
+Rails.application.config.assets.precompile += %w( bootstrap/glyphicons-halflings-regular.woff2 )
+
+rails g controller Home index
+
+config/routes.rb
+>
+  root 'home#index'
+
+gem 'devise'
