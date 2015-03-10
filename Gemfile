@@ -52,3 +52,4 @@ group :test, :development do
   gem "selenium-webdriver"
 end
 
+gem 'bower-rails'
