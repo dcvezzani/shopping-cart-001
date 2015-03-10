@@ -6,6 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-me = User.create!(email: "dave@reliacode.com", password: "Pass13!#", approved: true)
+me = User.create!(email: "joe@example.com", password: "password", approved: true)
 Product.create!(id: 46, name: "apples", stock: 100)
 Product.create!(id: 70, name: "oranges", stock: 100)
