@@ -19,5 +19,6 @@ class PurchasesController < ApplicationController
   end
 
   def create
+    authorize(@post)
   end
 end
