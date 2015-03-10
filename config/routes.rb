@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  get 'purchases/index', as: :step_one
-  post 'purchases' => 'purchases#purchase'
+  get 'step_one' => 'purchases#index', as: :step_one
+  post 'step_one/purchases' => 'purchases#purchase'
 
   get 'step_two' => 'purchases#step_two', as: :step_two
   post 'step_two/purchases' => 'purchases#create'

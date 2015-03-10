@@ -52,7 +52,7 @@
       $(".purchase_btn").text("processing...");
       $(".message").text("");
 
-      var jqxhr = $.post( "/purchases", data, function(response) {
+      var jqxhr = $.post( "/step_one/purchases", data, function(response) {
         //alert( "success" );
       })
       .done(function(responseJSON) {
