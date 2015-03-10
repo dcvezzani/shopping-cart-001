@@ -57,4 +57,6 @@ config/routes.rb
 >
   root 'home#index'
 
+gem 'byebug'
+
 gem 'devise'

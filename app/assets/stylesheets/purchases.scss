@@ -1,0 +1,28 @@
+// Place all the styles related to the Purchases controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.purchase_section{
+  margin: 1em auto;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border: 1px solid silver;
+  background-color: #dedede;
+}
+
+.message{
+  margin: 1em auto;
+  color: red;
+}
+
+.message.success{
+  color: green;
+}
+
+.message.error{
+  color: red;
+}
+
+.control{
+  margin: 1em auto;
+}

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'purchases/index'
+  post 'purchases' => 'purchases#create'
+
   get 'home/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -56,5 +59,5 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  root 'home#index'
+  root 'purchases#index'
 end
